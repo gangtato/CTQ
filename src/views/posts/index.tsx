@@ -64,17 +64,18 @@ function Posts(){
             </tr>
     ));
 
-    let options = data_user.users.map((option:IUsers, index:number) => 
-        (
-            <option key={index} value={option.id}>
-                {option.name}
+    let options = data_user.users.map((option:IUsers, index:number) => {
+        return `
+            <option key="${index}" value="${option.id}">
+                ${option.name}
             </option>
-        ) 
-    );
+        `;
+    }); 
+        
 
-    console.log(options);
+    let select = `<select class="border border-black px-4 py-2">${options}</select>`;
 
-    let select = <select className="border border-black px-4 py-2">{options}</select>;
+    
 
     async function handleAdd(){
         const { value: formValues } = await Swal.fire({
